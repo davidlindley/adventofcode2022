@@ -6,11 +6,14 @@
   "author": "David Lindley <david.lindley@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "day1": "nodemon --exec babel-node ./day1/index.js"
+    "day1": "nodemon --exec babel-node ./day1/index.js",
+    "day1:sass": "babel-node ./day1/createSassData.js && babel-node ./day1/sass/run.js"
   },
   "dependencies": {
+    "@sass-fairy/list": "^1.2.3",
     "axios": "^0.21.0",
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.20",
+    "sass": "^1.56.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.8",

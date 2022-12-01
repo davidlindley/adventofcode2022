@@ -1,0 +1,39 @@
+// Library for sorting lists
+@use '@sass-fairy/list';
+// Import the data (generated)
+@import "data";
+
+// A reducer function
+@function reduce($arr, $initialVal) {
+  $total: $initialVal;
+  @each $val in $arr {
+    $total: $total + $val;
+  }
+  @return $total;
+};
+
+// Converts a map to a list
+@function mapToList($map) {
+  $list: ();
+  @each $key, $value in $map {
+    $list: append($list, $value);
+  }
+  @return $list;
+}
+
+// Step 1: Squash the map to get reduced values
+$reducedMap: ();
+@each $index, $values in $data {
+  $sumOfValues: reduce($values, 0);
+  $reducedMap: map-merge($reducedMap, ($index: $sumOfValues));
+}
+
+// Step 2: Convert the map back to a list
+$reducedList: mapToList($reducedMap);
+
+// Step 3: Sort the list (yes I am using a library here....because)
+$sortedList: list.sort($reducedList, list.compare-numeric());
+
+// Get the two parts here
+@debug "Part1" nth($sortedList, length($sortedList));
+@debug "Part2" nth($sortedList,length($sortedList)) + nth($sortedList, length($sortedList) - 1) + nth($sortedList, length($sortedList) - 2);

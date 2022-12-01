@@ -996,6 +996,34 @@
   resolved "https://registry.yarnpkg.com/@nicolo-ribaudo/chokidar-2/-/chokidar-2-2.1.8-no-fsevents.3.tgz#323d72dd25103d0c4fbdce89dadf574a787b1f9b"
   integrity sha512-s88O1aVtXftvp5bCPB7WnmXc5IwOZZ7YPuwNPt+GtOOXpPvad1LfbmjYv+qII7zP6RU2QGnqve27dnLycEnyEQ==
 
+"@sass-fairy/exception@^1.0.0":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@sass-fairy/exception/-/exception-1.1.1.tgz#41454a4dbdd40a90e491a1f9cee788e7bc06a29d"
+  integrity sha512-DP3dwerkS/gE79CaCzaE46zkTSWxmUc8Q/8Io6FC9qYRaNJ5aR8l1IvRbEe6ZnsnVE1+Ow1XOzC9uL2eeh62Hg==
+
+"@sass-fairy/list@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@sass-fairy/list/-/list-1.2.3.tgz#2449a7f3c63adacdf104365aa1cc85ef4c89e3ee"
+  integrity sha512-B/bBHtC7cJiAVLyXnO5r3xiqVuWCPZgybAH7TUQ8bvABvGS7Lrve1H3/vzUqkPJeOEZ+JqhmcuSHACcehrOxww==
+  dependencies:
+    "@sass-fairy/exception" "^1.0.0"
+    "@sass-fairy/math" "^1.0.0"
+    "@sass-fairy/meta" "^1.0.0"
+
+"@sass-fairy/math@^1.0.0":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@sass-fairy/math/-/math-1.0.3.tgz#2f3bb635e6f00983d109ad1f7f22380f144b3e69"
+  integrity sha512-Lg/0vwx9Y7BSl/hTy3zO13bObx3dz8wkV/G6suX8B2j3IloXMGZmvdlmGwH+8J4e9/nUA/Yv3N9B6+W/IdLHmw==
+  dependencies:
+    "@sass-fairy/exception" "^1.0.0"
+
+"@sass-fairy/meta@^1.0.0":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@sass-fairy/meta/-/meta-1.0.2.tgz#16d4a8b8859a07bd87b8866d4fbe10258121da98"
+  integrity sha512-LLQnuY5kLdsGjGM+r94y3xew1wi7iok4Ciw43fYC9fCtyvwbeohMA0OK4vjl2iP9RaGIMEWfpjX7WZ0gSc5sSQ==
+  dependencies:
+    "@sass-fairy/exception" "^1.0.0"
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
@@ -1120,7 +1148,7 @@ chalk@^2.0.0:
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
 
-chokidar@^3.4.0, chokidar@^3.5.2:
+"chokidar@>=3.0.0 <4.0.0", chokidar@^3.4.0, chokidar@^3.5.2:
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.5.3.tgz#1cf37c8707b932bd1af1ae22c0432e2acd1903bd"
   integrity sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==
@@ -1430,6 +1458,11 @@ ignore-by-default@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/ignore-by-default/-/ignore-by-default-1.0.1.tgz#48ca6d72f6c6a3af00a9ad4ae6876be3889e2b09"
   integrity sha512-Ius2VYcGNk7T90CppJqcIkS5ooHUZyIQK+ClZfMfMNFEF9VSE73Fq+906u/CWu92x4gzZMWOwfFYckPObzdEbA==
+
+immutable@^4.0.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-4.1.0.tgz#f795787f0db780183307b9eb2091fcac1f6fafef"
+  integrity sha512-oNkuqVTA8jqG1Q6c+UglTOD1xhC1BtjKI7XkCXRkZHrN5m18/XsnUp8Q89GkQO/z+0WjonSvl0FLhDYftp46nQ==
 
 inflight@^1.0.4:
   version "1.0.6"
@@ -1870,6 +1903,15 @@ safe-regex-test@^1.0.0:
     get-intrinsic "^1.1.3"
     is-regex "^1.1.4"
 
+sass@^1.56.1:
+  version "1.56.1"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.56.1.tgz#94d3910cd468fd075fa87f5bb17437a0b617d8a7"
+  integrity sha512-VpEyKpyBPCxE7qGDtOcdJ6fFbcpOM+Emu7uZLxVrkX8KVU/Dp5UF7WLvzqRuUhB6mqqQt1xffLoG+AndxTZrCQ==
+  dependencies:
+    chokidar ">=3.0.0 <4.0.0"
+    immutable "^4.0.0"
+    source-map-js ">=0.6.2 <2.0.0"
+
 semver@^5.6.0, semver@^5.7.0, semver@^5.7.1:
   version "5.7.1"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.7.1.tgz#a954f931aeba508d307bbf069eff0c01c96116f7"
@@ -1912,6 +1954,11 @@ slash@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-2.0.0.tgz#de552851a1759df3a8f206535442f5ec4ddeab44"
   integrity sha512-ZYKh3Wh2z1PpEXWr0MpSBZ0V6mZHAQfYevttO11c51CaWjGTaadiKZ+wVt1PbMlDV5qhMFslpZCemhwOK7C89A==
+
+"source-map-js@>=0.6.2 <2.0.0":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.0.2.tgz#adbc361d9c62df380125e7f161f71c826f1e490c"
+  integrity sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==
 
 source-map-support@^0.5.16:
   version "0.5.21"
