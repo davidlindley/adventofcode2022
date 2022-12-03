@@ -74,6 +74,8 @@ function init() {
   }, 0)
 
   console.log('PART 2', part2Total)
+
+  console.log(pointsLookup)
 }
 
 init()
