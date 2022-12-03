@@ -8,7 +8,8 @@
   "scripts": {
     "day1": "nodemon --exec babel-node ./day1/index.js",
     "day1:sass": "babel-node ./day1/createSassData.js && babel-node ./day1/sass/run.js",
-    "day2": "nodemon --exec babel-node ./day2/index.js"
+    "day2": "nodemon --exec babel-node ./day2/index.js",
+    "day3": "nodemon --exec babel-node ./day3/index.js"
   },
   "dependencies": {
     "@sass-fairy/list": "^1.2.3",
