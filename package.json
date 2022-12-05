@@ -11,7 +11,8 @@
     "day2": "nodemon --exec babel-node ./day2/index.js",
     "day3": "nodemon --exec babel-node ./day3/index.js",
     "day4": "nodemon --exec babel-node ./day4/index.js",
-    "day5": "nodemon --exec babel-node ./day5/index.js"
+    "day5": "nodemon --exec babel-node ./day5/index.js",
+    "test": "jest --watch"
   },
   "dependencies": {
     "@sass-fairy/list": "^1.2.3",
@@ -26,6 +27,7 @@
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.12.7",
     "@babel/runtime": "^7.12.5",
+    "jest": "^29.3.1",
     "nodemon": "^2.0.6"
   }
 }

@@ -1,6 +1,4 @@
 import getData from '../utils/dataFetch'
-const isPractice = false
-const dataToFetch = isPractice ? 'practice' : 'data'
 
 // Runs the crane
 function runCrane(instructions, stacks, multiMove) {
@@ -64,15 +62,20 @@ function parseData(lines) {
 }
 
 
-function init() {
+function day5(isPractice = false) {
+    const dataToFetch = isPractice ? 'practice' : 'data'
     const data = getData('day5', dataToFetch, true)
     const { instructionsArr, stacksArr } = parseData(data)
     // PART 1
     const modifiedStacks = runCrane(instructionsArr, createInitialStacks(stacksArr), false)
-    console.log('PART1', getCode(modifiedStacks))
+    const part1 = getCode(modifiedStacks)
     // PART 2
     const modifiedStacks2 = runCrane(instructionsArr, createInitialStacks(stacksArr), true)
-    console.log('PART2', getCode(modifiedStacks2))
+    const part2 = getCode(modifiedStacks2)
+    return {
+        part1,
+        part2
+    }
 }
 
-init()
+export default day5
