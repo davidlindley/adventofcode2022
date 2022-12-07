@@ -2,21 +2,21 @@ import getData from '../utils/dataFetch'
 
 function getFileStructure(commands) {
     const directory = []
+    // Have a full tree view of the file structure including files, size and directories
+    // NOTE: size only is the top size of all files NOT subdirectories at this point
+    // as we don't know what the sub directories look like until we complete the commands
     const fileStructure = {
         '/': { files: {}, size: 0, directories: {}}
     }
     let curDir = fileStructure['/']
     for (let index = 0; index < commands.length; index++) {
-        const command = commands[index];
+        const command = commands[index]
+        // Split the command
         const [c1, c2, c3] = command.split(' ')
         if (c2 === 'cd') {
-            if (c3 === '..') {
-                // Go up a directory
-                directory.pop()
-            } else {
-                // Go into a new directory
-                directory.push(c3) // ['/', 'a', 'e]
-            }
+            // Go up a directory or go into new directory
+            c3 === '..' ? directory.pop() : directory.push(c3)
+           
             // Get to the correct current dir
             curDir = fileStructure['/']
             for (let index = 0; index < directory.length; index++) {
@@ -25,10 +25,9 @@ function getFileStructure(commands) {
                 curDir = curDir.directories[dir]
             }
         }
+
         // If there is a number then can assume it's a file
         if (!Number.isNaN(parseInt(c1))) {
-            // Got the file location
-            // fileStructure[directoryPath] +=
             curDir.files = {
                 ...curDir.files,
                 [c2]: c1
@@ -40,9 +39,11 @@ function getFileStructure(commands) {
 }
 
 function getDirSize(fileSystem, startingNode) {
-   let directoriesSize = {}
+    // Out output
+   const directoriesSize = {}
 
-   const recursiveDirFetch = (currentDirectory, key, currentPath) => {
+   // Our recursive directory sweep
+   const recursiveDirFetch = (currentDirectory, currentPath) => {
     let totalSize = currentDirectory.size
     // If no sub directoried then end of this tree
     if (Object.keys(currentDirectory.directories).length === 0) {
@@ -52,24 +53,32 @@ function getDirSize(fileSystem, startingNode) {
     }
     for (const dirKey in currentDirectory.directories) {
         if (Object.hasOwnProperty.call(currentDirectory.directories, dirKey)) {
+            // As directories can be repeated need a unique idenitfier for them
             const newPath = `${currentPath}/${dirKey}`
-            const subDirSize = recursiveDirFetch(currentDirectory.directories[dirKey], dirKey, newPath)
+            // Recurisvely find the size of this directory based on it's children (and children...etc etc)
+            const subDirSize = recursiveDirFetch(currentDirectory.directories[dirKey], newPath)
             totalSize += subDirSize
         }
     }
+    // Add to our directory size object
     directoriesSize[currentPath] = totalSize
     return totalSize
    }
 
-    recursiveDirFetch(fileSystem[startingNode], startingNode, startingNode)
+   // Start the recursive fetch
+    recursiveDirFetch(fileSystem[startingNode], startingNode)
     return directoriesSize
 }
 
 function day7(isPractice = false) {
+    // Setup (get data)
     const dataToFetch = isPractice ? 'practice' : 'data'
     const commands = getData('day7', dataToFetch, true)
+    // Get the file structure
     const fileStructure = getFileStructure(commands)
+    // Get the directory sizes based on the file structure
     const dirSizes = getDirSize(fileStructure, '/')
+
     /**
      * PART 1
      */
@@ -94,6 +103,7 @@ function day7(isPractice = false) {
         if (a < b) return -1
         return 0
     })[0]
+
     return {
         part1,
         part2: dirSizes[dirToDelete]
